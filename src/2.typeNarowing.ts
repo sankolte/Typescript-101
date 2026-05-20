@@ -1,6 +1,9 @@
 
 //this is not simething we do only in Ts >> these are just good programing practices we follow 
 
+//type narroing :  in ts basic type naroowing is basiclaly > when union used ( or has options in datatypes ) we check what will be the 
+// exact type by using if else foloowed by we can also do some work like exicute some actions in those if else blocks after validation the typr
+
 
 function getname (product : string|number){
     if(typeof product==="string"){
@@ -120,7 +123,7 @@ function ischaiorder(obj:any):obj is chaiorder{       //this is how we use it li
 // ekbar hogaya type gurd se validate ki koi tension nahi
 
 function serve(item:chaiorder|string){
-    if(ischaiorder(item)){
+    if(ischaiorder(item)){      //ye idahr type narowing hote hue 
         return `serve the item where type of item is ${item.type} and sugar is in quantity of ${item.sugar} `
     }
 }
