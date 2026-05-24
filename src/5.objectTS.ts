@@ -117,7 +117,7 @@ type brew={
 const coffee={
     brewtime:5,
     beans:"arabica"
-}
+}  //idhar ts apna pan infer kar lega uska tension mat lo 
 
 const chaibrew : brew = coffee;
 // extra values aa jaye to koi issue nai hota he in ts
@@ -143,3 +143,76 @@ type order={
     address:Address;
     //like thhis
 }
+
+//--------------------------------------
+
+// DATATYPE EKK TAREKE SE DEFINE KARKE >> USKO OBJECT ME USE BPHOT TAREKE SE KAR SAKTE HE 
+
+type chai={
+    name:string ;
+    type:string;
+    quantity:number;
+}
+// abhi object me ki nai gmasti 
+
+const updateChai = (updates:Partial<chai>)=>{
+  
+    console.log("updating chai with ", updates);
+
+
+
+}
+
+// abhi now what i can do is >> like a cool thing 
+
+
+updateChai({name:"elaichi"});
+
+// i can do this >> like i dont hvae to put all values for updaing me PARTIALLY bhi update kar sakta hu 
+
+// but kaise >> are wo he he na partila function wo sare dattypes ko optional (?) wala samjhta he >> matlab hua to bhi acha he nahi hua to bhi no problem aisa 
+
+// bus yaad rakho ki empty obj pass mat kar dena galti he 
+//like
+updateChai({});
+
+//--- ONE MORE VARIATION IN THIS 
+
+type chaiorder={
+    name :string;
+    quantity :number;
+}
+
+const placeOrder = (order:Required<chaiorder>)=>{
+    // this cna be also done 
+    console.log(order);
+
+}
+
+//  in this case i cant 
+
+// placeOrder({name:"elaichi tea})
+// but u can 
+
+placeOrder({name:"elaichi tea",quantity:2});
+
+//coz wo Required ka meaning is >> all all the types are required to mention >>
+
+
+//------one more OMIT
+
+type newchai={
+    name :string;
+    quantity:number;
+    ishot:boolean;
+    secretingredient:string;
+}
+
+//supppose i dont want that secretingredient wala thing like suppos ei dont ahve toshow it in my donrennt and this data is going in frontend 
+// so for imit one perticular thing 
+
+type newnameofobject =Omit<chai,"secretingredient">;
+
+// now new type cretaed withiut writnig sab ku h firse> where this type has everythinh same as newchai but no secretinngredients 
+
+//---------------------------------------------------------------------------------------
